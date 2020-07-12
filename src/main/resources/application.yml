@@ -1,0 +1,39 @@
+
+server:
+  port: 80
+
+spring:
+  application:
+    name: web-base
+#  mvc:
+#    static-path-pattern: /static/**
+  freemarker:
+    template-loader-path: classpath:/webapps/templates/
+    suffix: .html
+    cache: false
+  servlet:
+    multipart:
+      max-file-size: 50Mb
+      max-request-size: 100Mb
+  http:
+    encoding:
+      charset: UTF-8
+  resources:
+    static-locations: classpath:/webapps/static/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
