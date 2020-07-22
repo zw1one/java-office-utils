@@ -1,11 +1,66 @@
 <html>
 
+<style type="text/css">
+    div {
+        margin: 20px
+    }
+</style>
+
+<head>
+    <script type="text/javascript" src="/js/jquery-2.2.4.js"></script>
+    <script>
+        $(function () {
+
+        });
+
+        var multiFormSub = function () {
+
+            $("#result-div").html("process...");
+
+            var data = new FormData($("#multi-form")[0]);
+
+            $.ajax({
+                url: "/ftd/excel2mongo",
+                success: function (result) {
+                    // debugger;
+                    if (!result.flag) {
+                        var resultMsg = "import failed! msg: " + result.msg;
+                        $("#result-div").html(resultMsg);
+                        return;
+                    }
+                    var resultMsg = "import success! msg: " + result.msg;
+                    $("#result-div").html(resultMsg);
+                },
+                contentType: false,
+                processData: false,
+                // cache: false,
+                // async: false,
+                type: "POST",
+                data: data
+            });
+
+            return false;
+        };
+
+    </script>
+</head>
 <body>
-Hellow World!
 
-<br><br>
+<form action="javascript:void(0);" id="multi-form" enctype="multipart/form-data" onsubmit="multiFormSub();">
 
-docker作业：石中玉
+    <hr>
+
+    <div>Excel : <input id="upload_file" name="file" type="file"></div>
+    <div>可选参数1 : <input id="param1" name="param1" type="text"></div>
+    <div>可选参数2 : <input id="param2" name="param2" type="text"></div>
+    <div><input type="submit"></div>
+
+</form>
+
+<div id="result-div" style="font-size: 10px;">
+
+</div>
+
 
 </body>
 

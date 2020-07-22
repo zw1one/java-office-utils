@@ -111,6 +111,20 @@
             <!--<scope>test</scope>-->
         </dependency>
 
+        <!--fastjson-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.38</version>
+        </dependency>
+
+        <!--mongo-java-driver-->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>3.8.2</version>
+        </dependency>
+
 
     </dependencies>
 
@@ -136,7 +150,44 @@
                 </configuration>
             </plugin>
         </plugins>
+
+        <!--多环境配置文件-->
+        <resources>
+            <resource>
+                <directory>src/main/resources/</directory>
+                <excludes>
+                    <exclude>env/**</exclude>
+                </excludes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources/env/${profilesActive}</directory>
+            </resource>
+        </resources>
+
     </build>
+
+    <!--================================profiles=================================-->
+
+    <profiles>
+        <!--开发环境-->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profilesActive>dev</profilesActive>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <!--发布环境-->
+        <profile>
+            <id>release</id>
+            <properties>
+                <profilesActive>release</profilesActive>
+            </properties>
+        </profile>
+    </profiles>
 
 
 </project>
