@@ -23,12 +23,13 @@ java操作office的代码 - web
 
 ### 二、运行
 
-* IDEA运行(必须加)
+##### (1) IDEA运行
+
 ```
-IDEA的Active profiles处，添加`dev`
+IDEA的Active profiles处，添加`dev` (必须加上，不然找不到配置)
 ```
 
-##### 部署Web
+##### (2) 部署Web
 
 * Maven打包命令
 ```
@@ -42,7 +43,6 @@ mvn clean package -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Prelease
 ```
 (java -server -Xmx1024m -Xms256m -XX:+UseParallelGC -XX:ParallelGCThreads=20  -jar File-To-Database-Web-1.0-SNAPSHOT.jar &)
 ```
-
 
 * web入口  
 <a>http://127.0.0.1:10086/</a>
