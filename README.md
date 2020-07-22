@@ -21,17 +21,32 @@ java操作office的代码 - web
 
 等待填坑中...（填不上了）
 
-### 二、入口
+### 二、运行
 
-**功能入口**  
+* IDEA运行(必须加)
+```
+IDEA的Active profiles处，添加`dev`
+```
+
+##### 部署Web
+
+* Maven打包命令
+```
+mvn clean package -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Pdev
+mvn clean package -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Prelease
+```
+
+打包完idea启动项目报错，Rebuild project或者mvn clean
+
+* jar包运行命令
+```
+(java -server -Xmx1024m -Xms256m -XX:+UseParallelGC -XX:ParallelGCThreads=20  -jar File-To-Database-Web-1.0-SNAPSHOT.jar &)
+```
+
+
+* web入口  
 <a>http://127.0.0.1:10086/</a>
 
-**swagger接口文档**  
+* swagger接口文档  
 <a>http://127.0.0.1:10086/swagger-ui.html</a>
-
-### 三、部署
-
-```
-todo 加上部署命令
-```
 
